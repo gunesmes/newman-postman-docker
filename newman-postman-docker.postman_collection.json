@@ -1,0 +1,141 @@
+{
+	"info": {
+		"_postman_id": "0753b806-4d5d-47f6-a133-56b6e3b0bd0b",
+		"name": "newman-postman-docker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "d54ad074-38d1-4a2c-8324-24884e1a7157",
+			"name": "delete vehicle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e43bf1c1-5245-497c-b7c0-941aff01c268",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/user/{{userIdDelete}}/vehicles/{{vehicleIdDelete}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"{{userIdDelete}}",
+						"vehicles",
+						"{{vehicleIdDelete}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "f578fecf-7f15-4fbd-9a71-73208e36205a",
+			"name": "createUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "310d14f7-8a63-4333-8c04-f8e5bcee7dcb",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"id should be equal to 3\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData['id']).to.eql(3);",
+							"});",
+							"",
+							"pm.test(\"id should not be equal to null\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[\"id\"]).not.to.eql(null);",
+							"    pm.expect(jsonData[\"id\"]).to.eql('63d376b3-23e5-4102-9e50-00e8ab7dca34');",
+							"});",
+							"",
+							"pm.test(\"createdAt should include Europe/Istanbul\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[\"createdAt\"]).to.include(\"Europe/Istanbul\")",
+							"});",
+							"",
+							"pm.test(\"updatedAt should include Europe/Istanbul\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[\"updatedAt\"]).to.include(\"Europe/Istanbul\")",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\":\"Mesut\",\n  \"lastName\":\"Gunes\", \n  \"email\":\"mesut.gunes@vngrs.com\",\n  \"id\":\"63d376b3-23e5-4102-9e50-e8ab7dca34\" \n}"
+				},
+				"url": {
+					"raw": "{{url}}/user",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f1612e84-8c52-4b8b-afcb-dd51ecb1c107",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "baab0676-69f2-4b7d-b151-f9c7c1c929be",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

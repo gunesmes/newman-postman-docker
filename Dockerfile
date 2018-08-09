@@ -3,6 +3,9 @@ FROM node:6.5.0-slim
 RUN npm install newman
 RUN npm install -g newman-reporter-html
 
-WORKDIR /usr/src/app/
+RUN mkdir /newman
+WORKDIR /newman
+
+EXPOSE 9000
 
 ENTRYPOINT ["/node_modules/.bin/newman"]

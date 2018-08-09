@@ -3,8 +3,10 @@ You need node first, check this https://nodejs.org/en/download/
 
 Then install Postman and Newman as Node package
 
-`npm install -g newman`
-`npm install -g newman-reporter-html`
+```
+npm install -g newman
+npm install -g newman-reporter-html
+```
 
 ## RUN
 

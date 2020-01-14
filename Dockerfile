@@ -5,7 +5,6 @@ RUN npm install newman-reporter-html
 RUN npm install newman-reporter-json-summary
 RUN npm install newman-reporter-htmlextra
 
-
 RUN mkdir /newman
 WORKDIR /newman
 
